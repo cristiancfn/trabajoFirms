@@ -50,13 +50,13 @@ async function loadFireData() {
                 const date = p.acq_date ?? p.acq_datetime ?? '';
                 const time = p.acq_time != null ? formatAcqTime(p.acq_time) : '';
                 const html = `
-              <strong>FIRMS MODIS (24h)</strong><br/>
-              <b>Fecha:</b> ${date} ${time}<br/>
-              <b>Brightness:</b> ${p.brightness ?? ''}<br/>
-              <b>Confidence:</b> ${p.confidence ?? ''}<br/>
-              <b>FRP:</b> ${p.frp ?? ''}<br/>
-              <b>Lat/Lon:</b> ${p.latitude?.toFixed?.(5) ?? ''}, ${p.longitude?.toFixed?.(5) ?? ''}
-            `;
+                                <strong>FIRMS MODIS (24h)</strong><br/>
+                                <b>Fecha:</b> ${date} ${time}<br/>
+                                <b>Brightness:</b> ${p.brightness ?? ''}<br/>
+                                <b>Confidence:</b> ${p.confidence ?? ''}<br/>
+                                <b>FRP:</b> ${p.frp ?? ''}<br/>
+                                <b>Lat/Lon:</b> ${p.latitude?.toFixed?.(5) ?? ''}, ${p.longitude?.toFixed?.(5) ?? ''}
+                            `;
                 layer.bindPopup(html);
             }
         }).addTo(map);
