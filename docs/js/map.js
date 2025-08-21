@@ -1,8 +1,19 @@
 import { config } from "./config.js";
 
 
-// Inicializar mapa
-const map = L.map('map').setView([4.6, -74.1], 5);
+// Coordenadas del bounding box de Colombia
+const colombiaBounds = [
+    [-4.5, -78.0], // Suroeste
+    [13.5, -67.0]  // Noreste
+];
+
+// Inicializar mapa SOLO Colombia y limitar movimiento y zoom
+const map = L.map('map', {
+    maxBounds: colombiaBounds, // Limita el área de movimiento
+    maxBoundsViscosity: 1.0,  // No deja salir del área
+    minZoom: 6,               // Zoom mínimo para Colombia
+    maxZoom: 12               // Zoom máximo
+}).setView([4.6, -74.1], 6); // Centra y ajusta el zoom
 
 // Agregar capa base
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -18,10 +29,21 @@ const params = {
     "STARTINDEX": "0",
     "COUNT": "1000",
     "SRSNAME": "urn:ogc:def:crs:EPSG::4326",
-    "BBOX": "-4.5,-82.0,13.6,-66.8,urn:ogc:def:crs:EPSG::4326",
+    "BBOX": "-4.5,-78.0,13.5,-67.0,urn:ogc:def:crs:EPSG::4326", // Solo Colombia más estricto
     "outputformat": "json"
 }
 const URL = `${config.API_URL}${config.API_KEY}/?${new URLSearchParams(params).toString()}`;
+
+// Función para filtrar puntos dentro de Colombia
+function isInColombia(lat, lon) {
+    lat = Number(lat);
+    lon = Number(lon);
+    return (
+        !isNaN(lat) && !isNaN(lon) &&
+        lat >= -4.5 && lat <= 13.5 &&
+        lon >= -78.0 && lon <= -67.0
+    );
+}
 
 // Función para cargar datos de incendios
 async function loadFireData() {
@@ -33,6 +55,12 @@ async function loadFireData() {
         }
 
         const geojson = await response.json();
+
+        // Filtrar solo los puntos dentro de Colombia
+        geojson.features = geojson.features.filter(f => {
+            const p = f.properties || {};
+            return isInColombia(p.latitude, p.longitude);
+        });
 
         const firmsLayer = L.geoJSON(geojson, {
             pointToLayer: (feature, latlng) => {
@@ -64,6 +92,7 @@ async function loadFireData() {
         // Enfocar a los datos
         const b = firmsLayer.getBounds();
         if (b.isValid()) map.fitBounds(b, { padding: [20, 20] });
+        map.fitBounds(colombiaBounds, { padding: [20, 20] });
 
     } catch (error) {
         console.error('Error cargando datos:', error);
@@ -86,3 +115,4 @@ function formatAcqTime(t) {
 
 // Cargar datos al inicializar
 loadFireData();
+
