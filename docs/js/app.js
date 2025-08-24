@@ -13,10 +13,8 @@ const renderUI = () => {
         return;
     }
 
-    // 1. Crear la estructura principal
     createLayout(root);
 
-    // 2. Poblar los componentes en sus contenedores
     renderNavbar(document.getElementById('navbar'));
     renderSections(document.getElementById('sections-container'));
     renderFooter(document.getElementById('footer'));

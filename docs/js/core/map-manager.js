@@ -25,13 +25,16 @@ export const getMap = () => {
 };
 
 export const fitBounds = (layer) => {
-    if (!map || !layer) return;
+    if (!map) return;
 
-    const bounds = layer.getBounds();
-    if (bounds.isValid()) {
-        map.fitBounds(bounds, { padding: [20, 20] });
-    } else {
-        // Si no hay marcadores, simplemente ajusta a Colombia
-        map.fitBounds(colombiaBounds, { padding: [20, 20] });
+    const finalBounds = L.latLngBounds(colombiaBounds);
+
+    if (layer) {
+        const layerBounds = layer.getBounds();
+        if (layerBounds.isValid()) {
+            finalBounds.extend(layerBounds);
+        }
     }
+
+    map.fitBounds(finalBounds, { padding: [20, 20] });
 };

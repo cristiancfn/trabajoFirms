@@ -3,9 +3,10 @@ import { firmsApiParams } from "../utils/constants.js";
 import { isInColombia, buildApiUrl } from "../utils/helpers.js";
 
 const getFullApiUrl = () => {
-    const baseUrl = buildApiUrl(config.API_BASE_URL, config.API_KEY);
+    const { baseUrl, apiKey } = config.firmsApiService;
+    const firmsBaseUrl = buildApiUrl(baseUrl, apiKey);
     const params = new URLSearchParams(firmsApiParams).toString();
-    return `${baseUrl}?${params}`;
+    return `${firmsBaseUrl}?${params}`;
 };
 
 export const getFireData = async () => {
