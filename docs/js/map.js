@@ -32,7 +32,6 @@ const params = {
     "BBOX": "-4.5,-78.0,13.5,-67.0,urn:ogc:def:crs:EPSG::4326", // Solo Colombia más estricto
     "outputformat": "json"
 }
-const URL = `${config.API_URL}${config.API_KEY}/?${new URLSearchParams(params).toString()}`;
 
 // Función para filtrar puntos dentro de Colombia
 function isInColombia(lat, lon) {
@@ -48,7 +47,7 @@ function isInColombia(lat, lon) {
 // Función para cargar datos de incendios
 async function loadFireData() {
     try {
-        const response = await fetch(`${URL}`);
+        const response = await fetch(`${config.API_URL}`);
 
         if (!response.ok) {
             throw new Error(`HTTP ${response.status} ${response.statusText}`);
