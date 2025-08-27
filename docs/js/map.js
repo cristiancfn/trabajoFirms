@@ -53,7 +53,8 @@ async function loadFireData() {
             throw new Error(`HTTP ${response.status} ${response.statusText}`);
         }
 
-        const geojson = await response.json();
+        const json = await response.json();
+        const geojson = JSON.parse(json.body);
 
         // Filtrar solo los puntos dentro de Colombia
         geojson.features = geojson.features.filter(f => {
