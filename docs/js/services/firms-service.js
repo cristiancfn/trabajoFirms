@@ -1,5 +1,5 @@
 import { config } from "../config.js";
-import { isInColombia, buildApiUrl } from "../utils/helpers.js";
+import { isInColombia } from "../utils/helpers.js";
 
 export const getFireData = async () => {
     const url = config.API_URL;

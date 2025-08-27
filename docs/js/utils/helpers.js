@@ -21,13 +21,3 @@ export function formatAcqTime(t) {
     const s = String(Math.round(Number(t) || 0)).padStart(4, '0');
     return `${s.slice(0, 2)}:${s.slice(2)}`;
 }
-
-/**
- * Construye la URL base de la API a partir de sus componentes.
- * @param {object} baseUrl - Objeto con dominio y ruta.
- * @param {string} apiKey - La clave de la API.
- * @returns {string} La URL base completa.
- */
-export const buildApiUrl = (baseUrl, apiKey) => {
-    return `${baseUrl.domain}${baseUrl.path}${apiKey}/`;
-};
