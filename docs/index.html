@@ -2,99 +2,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        
     <title>GeoFire</title>
-    <style>
-        body {
-            margin: 0;
-            background: #f3f4f6;
-            font-family: Arial, Helvetica, sans-serif;
-        } 
-        nav {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        }
-        #map {
-            width: 100%;
-            height: 750px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-        }
-        section {
-            background: #fff;
-            margin: 30px auto;
-            max-width: 900px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            padding: 30px 24px;
-        }
-        h2 {
-            color: #1a202c;
-        }
-        footer {
-            background: #1a202c;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 30px;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
-        }
-        a {
-            transition: color 0.2s;
-        }
-        a:hover {
-            color: #1a202c;
-        }
-        #map {
-    width: 100%;
-    height: 750px; /* Ajusta aquí el alto */
-    margin-bottom: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-}
-    </style>
 </head>
 <body>
-    <nav style="background: #1a202c; color: #fff; padding: 10px 0; display: flex; align-items: center; justify-content: space-between;">
-        <div style="display: flex; align-items: center;">
-            <img src="https://img.icons8.com/color/48/000000/fire-element.png" alt="GeoFire Logo" style="height:40px; margin-right:10px;">
-            <span style="font-size: 1.5em; font-weight: bold;">GeoFire</span>
-        </div>
-        <ul style="list-style: none; display: flex; gap: 25px; margin: 0; padding: 0;">
-            <li><a href="#inicio" style="color: #fff; text-decoration: none;">Inicio</a></li>
-            <li><a href="#explicacion" style="color: #fff; text-decoration: none;">Explicación del Proyecto</a></li>
-            <li><a href="#servicio" style="color: #fff; text-decoration: none;">Conexión al Servicio Web</a></li>
-            <li><a href="#acerca" style="color: #fff; text-decoration: none;">Acerca de</a></li>
-        </ul>
-    </nav>
+    <!-- App will be rendered here -->
+    <div id="root"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <!-- El mapa va primero -->
-    <div id="map"></div>
-
-    <!-- Luego las secciones -->
-    <section id="inicio">
-        <h2>Bienvenido a GeoFire</h2>
-        <p>Visualiza incendios activos en Colombia usando datos FIRMS de la NASA.</p>
-    </section>
-    <section id="explicacion">
-        <h2>Explicación del Proyecto</h2>
-        <p>Este proyecto muestra en un mapa los incendios detectados en Colombia, usando Leaflet y datos del servicio FIRMS.</p>
-    </section>
-    <section id="servicio">
-        <h2>Conexión al Servicio Web</h2>
-        <p>La aplicación consulta el servicio FIRMS de la NASA mediante una API pública y filtra los datos para mostrar solo los incendios dentro de Colombia.</p>
-    </section>
-    <section id="acerca">
-        <h2>Acerca de</h2>
-        <p>GeoFire es una tarea académica para visualizar datos geoespaciales en tiempo real.</p>
-    </section>
-
-    <footer>
-        GeoFire &copy; 2025 | Proyecto académico Ing Software | Contacto: geofire@gmail.com 
-    </footer>
-    <script type="module" src="js/map.js"></script>
+    <!-- Main App Script -->
+    <script type="module" src="js/app.js"></script>
 </body>
-<!-- Debe invocarse posterirmente se ha cargado el código HTML -->
-<script type="module" src="js/map.js"></script>
 </html>
