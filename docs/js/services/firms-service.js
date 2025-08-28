@@ -1,16 +1,8 @@
 import { config } from "../config.js";
-import { firmsApiParams } from "../utils/constants.js";
-import { isInColombia, buildApiUrl } from "../utils/helpers.js";
-
-const getFullApiUrl = () => {
-    const { baseUrl, apiKey } = config.firmsApiService;
-    const firmsBaseUrl = buildApiUrl(baseUrl, apiKey);
-    const params = new URLSearchParams(firmsApiParams).toString();
-    return `${firmsBaseUrl}?${params}`;
-};
+import { isInColombia } from "../utils/helpers.js";
 
 export const getFireData = async () => {
-    const url = getFullApiUrl();
+    const url = config.API_URL;
     try {
         const response = await fetch(url);
 
@@ -18,7 +10,8 @@ export const getFireData = async () => {
             throw new Error(`HTTP ${response.status} ${response.statusText}`);
         }
 
-        const geojson = await response.json();
+        const json = await response.json();
+        const geojson = JSON.parse(json.body);
 
         // Filtrar solo los puntos dentro de Colombia
         geojson.features = geojson.features.filter(feature => {
