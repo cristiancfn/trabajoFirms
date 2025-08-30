@@ -2,6 +2,7 @@ const navLinks = [
     { href: "#inicio", text: "Inicio" },
     { href: "#explicacion", text: "Explicación del Proyecto" },
     { href: "#servicio", text: "Conexión al Servicio Web" },
+    { href: "#codigo-fuente", text: "Código Fuente" },
     { href: "#acerca", text: "Acerca de" }
 ];
 
