@@ -75,6 +75,19 @@ const sectionsData = [
     content:
       "GeoFire es una tarea académica para visualizar datos geoespaciales en tiempo real.",
   },
+  {
+    id: "codigo-fuente",
+    title: "Código Fuente",
+    content: `
+      <p>Explora la estructura de archivos y el código fuente del proyecto directamente desde aquí.</p>
+      <div class="code-explorer-container">
+        <div id="file-tree" class="file-tree"></div>
+        <div id="code-viewer" class="code-viewer">
+          <pre><code>Selecciona un archivo del árbol para ver su contenido.</code></pre>
+        </div>
+      </div>
+    `,
+  },
 ];
 
 const createSectionHTML = (section) => {

@@ -5,6 +5,7 @@ import { createLayout } from './components/layout.js';
 import { renderNavbar } from './components/navbar.js';
 import { renderFooter } from './components/footer.js';
 import { renderSections } from './components/sections.js';
+import { initCodeExplorer } from './ui/code-explorer.js';
 
 const renderUI = () => {
     const root = document.getElementById('root');
@@ -18,6 +19,7 @@ const renderUI = () => {
     renderNavbar(document.getElementById('navbar'));
     renderSections(document.getElementById('sections-container'));
     renderFooter(document.getElementById('footer'));
+    initCodeExplorer();
 };
 
 const loadMapAndData = async () => {
