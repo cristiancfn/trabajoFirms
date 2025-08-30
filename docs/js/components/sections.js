@@ -77,13 +77,13 @@ const sectionsData = [
   },
   {
     id: "codigo-fuente",
-    title: "Código Fuente",
+    title: "Código Fuente del Proyecto",
     content: `
       <p>Explora la estructura de archivos y el código fuente del proyecto directamente desde aquí.</p>
       <div class="code-explorer-container">
         <div id="file-tree" class="file-tree"></div>
         <div id="code-viewer" class="code-viewer">
-          <pre><code>Selecciona un archivo del árbol para ver su contenido.</code></pre>
+          <pre><code>Selecciona un archivo del árbol para ver su contenido. </code></pre>
         </div>
       </div>
     `,
